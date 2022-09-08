@@ -9,6 +9,7 @@ app.use(express.json());
 
 const API_KEY = process.env.API_KEY;
 const port = process.env.PORT || 4000;
+const nodeEnv = process.env.NODE_ENV;
 
 const headers = {
     headers: {
@@ -28,8 +29,15 @@ app.post("/search-result", async (req, res) =>{
     } catch (error) {
         console.log(error);
     }
-})
+});
 
+app.get("/healthcheck", (req, res) => {
+    res.send({
+        status: 'online',
+        version,
+        nodeEnv
+    });
+});
 
 app.listen(port, () => {
   "Server listening on port", port;
