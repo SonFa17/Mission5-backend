@@ -31,13 +31,7 @@ app.post("/search-result", async (req, res) =>{
     }
 });
 
-app.get("/healthcheck", (req, res) => {
-    res.send({
-        status: 'online',
-        version,
-        nodeEnv
-    });
-});
+
 
 app.listen(port, () => {
   "Server listening on port", port;
